@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Sympta — Symptom Tracking, Made Gentle</title>
+    <meta
+      name="description"
+      content="Sympta is a calm, guided symptom tracker that helps you log daily check-ins, spot patterns, and stay in control."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0f1d18;
+        --bg-2: #122720;
+        --bg-3: #0b1512;
+        --text: #e9f6f1;
+        --muted: #a7c1b7;
+        --accent: #5bd6a2;
+        --accent-2: #46b68a;
+        --card: rgba(20, 45, 37, 0.7);
+        --stroke: rgba(98, 166, 140, 0.2);
+        --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        color: var(--text);
+        font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+        background: radial-gradient(
+            circle at 20% 20%,
+            rgba(91, 214, 162, 0.18),
+            transparent 45%
+          ),
+          radial-gradient(
+            circle at 80% 0%,
+            rgba(70, 182, 138, 0.2),
+            transparent 45%
+          ),
+          linear-gradient(160deg, var(--bg), var(--bg-2), var(--bg-3));
+        min-height: 100vh;
+        background-color: var(--bg);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1100px, 92vw);
+        margin: 0 auto;
+        padding: calc(28px + env(safe-area-inset-top)) 0
+          calc(80px + env(safe-area-inset-bottom));
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 6px 0 24px;
+        position: sticky;
+        top: 0;
+        backdrop-filter: blur(16px);
+        background: linear-gradient(
+          180deg,
+          rgba(15, 29, 24, 0.92),
+          rgba(15, 29, 24, 0.6)
+        );
+        z-index: 10;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .brand img {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        box-shadow: inset 0 0 0 1px var(--stroke), var(--shadow);
+      }
+
+      .brand span {
+        font-family: "Fraunces", serif;
+        font-weight: 700;
+        font-size: 22px;
+        letter-spacing: 0.2px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 18px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .nav-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 16px;
+        border-radius: 999px;
+        background: rgba(18, 39, 32, 0.5);
+        border: 1px solid var(--stroke);
+        font-size: 13px;
+        color: var(--text);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 36px;
+        align-items: center;
+        padding: 32px 0 48px;
+      }
+
+      .hero-center {
+        text-align: center;
+        grid-column: 1 / -1;
+        margin-bottom: 24px;
+      }
+
+      .hero h1 {
+        font-family: "Fraunces", serif;
+        font-size: clamp(34px, 6vw, 56px);
+        margin: 0 0 14px;
+        line-height: 1.05;
+        letter-spacing: -0.4px;
+      }
+
+      .hero p {
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.6;
+        margin: 0 0 24px;
+      }
+
+      .cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .support-link {
+        display: inline-flex;
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .appstore-badge img {
+        height: 68px;
+        width: auto;
+        display: block;
+      }
+
+      .cta-center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 18px;
+        border-radius: 999px;
+        font-weight: 600;
+        letter-spacing: 0.2px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #0b1512;
+        box-shadow: 0 12px 30px rgba(70, 182, 138, 0.35);
+      }
+
+      .btn-secondary {
+        border: 1px solid var(--stroke);
+        color: var(--text);
+        background: rgba(18, 39, 32, 0.5);
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .hero-card {
+        background: var(--card);
+        border-radius: 24px;
+        padding: 22px;
+        border: 1px solid var(--stroke);
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+            circle at top right,
+            rgba(91, 214, 162, 0.22),
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at bottom left,
+            rgba(70, 182, 138, 0.2),
+            transparent 35%
+          );
+        opacity: 0.8;
+        pointer-events: none;
+      }
+
+      .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .stat {
+        background: rgba(9, 20, 16, 0.6);
+        border: 1px solid var(--stroke);
+        border-radius: 16px;
+        padding: 14px;
+      }
+
+      .stat h3 {
+        margin: 0 0 4px;
+        font-size: 20px;
+      }
+
+      .stat span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .pill {
+        padding: 6px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--stroke);
+        background: rgba(12, 26, 21, 0.6);
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .section {
+        margin-top: 56px;
+      }
+
+      .section h2 {
+        font-family: "Fraunces", serif;
+        font-size: clamp(24px, 4vw, 36px);
+        margin: 0 0 10px;
+      }
+
+      .section p {
+        color: var(--muted);
+        margin: 0 0 24px;
+        line-height: 1.6;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .feature {
+        background: var(--card);
+        border: 1px solid var(--stroke);
+        border-radius: 18px;
+        padding: 18px;
+        min-height: 160px;
+      }
+
+      .feature h3 {
+        margin: 12px 0 6px;
+        font-size: 16px;
+      }
+
+      .feature span {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .feature .icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: rgba(91, 214, 162, 0.15);
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 24px;
+      }
+
+      .list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .list-item {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        color: var(--muted);
+      }
+
+      .list-item strong {
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .reviews {
+        display: grid;
+        gap: 12px;
+      }
+
+      .review {
+        background: rgba(7, 17, 13, 0.6);
+        border: 1px solid var(--stroke);
+        border-radius: 16px;
+        padding: 14px;
+      }
+
+      .review h4 {
+        margin: 0 0 6px;
+        font-size: 14px;
+      }
+
+      .review span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .footer {
+        margin-top: 64px;
+        border-top: 1px solid var(--stroke);
+        padding-top: 20px;
+        color: var(--muted);
+        font-size: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: space-between;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .floaty {
+        position: absolute;
+        border-radius: 999px;
+        filter: blur(0.5px);
+        opacity: 0.4;
+        pointer-events: none;
+        mix-blend-mode: screen;
+      }
+
+      .floaty.one {
+        width: 140px;
+        height: 140px;
+        background: radial-gradient(
+          circle,
+          rgba(91, 214, 162, 0.4),
+          transparent 65%
+        );
+        top: 140px;
+        right: 8%;
+      }
+
+      .floaty.two {
+        width: 220px;
+        height: 220px;
+        background: radial-gradient(
+          circle,
+          rgba(70, 182, 138, 0.35),
+          transparent 70%
+        );
+        bottom: 120px;
+        left: 6%;
+      }
+
+      @media (max-width: 960px) {
+        .hero,
+        .split {
+          grid-template-columns: 1fr;
+        }
+        .feature-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 640px) {
+        .nav-links {
+          display: none;
+        }
+        .nav {
+          flex-wrap: wrap;
+        }
+        .nav-cta {
+          width: 100%;
+          justify-content: center;
+        }
+        .hero {
+          gap: 24px;
+        }
+        .appstore-badge {
+          display: flex;
+          justify-content: center;
+        }
+        .appstore-badge img {
+          height: 72px;
+        }
+        .support-link {
+          justify-content: center;
+        }
+        .feature-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="floaty one"></div>
+    <div class="floaty two"></div>
+    <div class="container">
+      <nav class="nav">
+        <div class="brand">
+          <img src="AppIcon.png" alt="Sympta logo" />
+          <span>Sympta</span>
+        </div>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#insights">Insights</a>
+          <a href="#privacy">Privacy</a>
+        </div>
+        <a
+          class="nav-cta"
+          href="https://apps.apple.com/app/sympta-symptom-tracker/id6758482143"
+          >Download</a
+        >
+      </nav>
+
+      <section class="hero">
+        <div class="hero-center reveal">
+          <h1>Symptom tracking that feels calm, clear, and kind.</h1>
+          <p>
+            Sympta helps you log symptoms, meals, mood, sleep, and notes in a
+            few taps — or speak naturally and let AI draft your check‑in. Spot
+            patterns over time and stay in control of your data.
+          </p>
+          <div class="cta-center">
+            <a
+              class="appstore-badge"
+              href="https://apps.apple.com/app/sympta-symptom-tracker/id6758482143"
+              aria-label="Download on the App Store"
+            >
+              <img
+                src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83"
+                alt="Download on the App Store"
+              />
+            </a>
+            <a class="support-link" href="mailto:support@trysympta.com"
+              >Questions? Talk to Support</a
+            >
+          </div>
+        </div>
+
+        <div class="hero-card reveal">
+          <div class="stat-grid">
+            <div class="stat">
+              <h3>5s</h3>
+              <span>Start a check‑in</span>
+            </div>
+            <div class="stat">
+              <h3>1 tap</h3>
+              <span>Reuse a past day</span>
+            </div>
+            <div class="stat">
+              <h3>PDF</h3>
+              <span>Export summaries</span>
+            </div>
+            <div class="stat">
+              <h3>AI</h3>
+              <span>Voice → structured logs</span>
+            </div>
+          </div>
+          <div class="pill-row">
+            <span class="pill">Symptoms</span>
+            <span class="pill">Meals</span>
+            <span class="pill">Mood</span>
+            <span class="pill">Sleep</span>
+            <span class="pill">Notes</span>
+            <span class="pill">Insights</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="features">
+        <h2 class="reveal">Built for real life, not perfect days.</h2>
+        <p>
+          Whether you’re tracking chronic symptoms or just trying to understand
+          your body better, Sympta keeps it lightweight and supportive.
+        </p>
+        <div class="feature-grid">
+          <div class="feature reveal">
+            <div class="icon">✦</div>
+            <h3>Quick daily check‑ins</h3>
+            <span>Log symptoms, meals, mood, and sleep without friction.</span>
+          </div>
+          <div class="feature reveal">
+            <div class="icon">🎙</div>
+            <h3>Voice + AI autofill</h3>
+            <span>Speak naturally. Review and edit before saving.</span>
+          </div>
+          <div class="feature reveal">
+            <div class="icon">📅</div>
+            <h3>Calendar & patterns</h3>
+            <span>See your month at a glance and spot trends over time.</span>
+          </div>
+          <div class="feature reveal">
+            <div class="icon">🔁</div>
+            <h3>Reuse past days</h3>
+            <span>Prefill a previous entry and adjust what changed.</span>
+          </div>
+          <div class="feature reveal">
+            <div class="icon">📄</div>
+            <h3>Exportable reports</h3>
+            <span>Share PDF summaries with clinicians or for yourself.</span>
+          </div>
+          <div class="feature reveal">
+            <div class="icon">🔒</div>
+            <h3>Private & secure</h3>
+            <span>Your data is yours. Export or delete anytime.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section split" id="insights">
+        <div class="reveal">
+          <h2>Insights that respect how you feel.</h2>
+          <p>
+            We use inclusive language and gentle prompts, so the app supports
+            you — it never judges you.
+          </p>
+          <div class="list">
+            <div class="list-item">
+              <strong>Trend views:</strong>
+              <span>See patterns across mood, sleep, and symptoms.</span>
+            </div>
+            <div class="list-item">
+              <strong>Daily clarity:</strong>
+              <span>One entry per day, easy to edit when needed.</span>
+            </div>
+            <div class="list-item">
+              <strong>Gentle reminders:</strong>
+              <span>Choose times that fit your routine.</span>
+            </div>
+          </div>
+        </div>
+        <div class="reviews">
+          <div class="review reveal">
+            <h4>“Finally a tracker that feels calm.”</h4>
+            <span>— Maya</span>
+          </div>
+          <div class="review reveal">
+            <h4>“Voice logging makes it effortless.”</h4>
+            <span>— Sam</span>
+          </div>
+          <div class="review reveal">
+            <h4>“I can actually see my patterns now.”</h4>
+            <span>— Erin</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="privacy">
+        <h2 class="reveal">Transparent, human-first privacy.</h2>
+        <p>
+          If you use Voice + AI, your transcript is processed to draft your
+          entry. You always review before saving. We do not sell your data.
+        </p>
+        <div class="cta">
+          <a class="btn btn-secondary" href="https://trysympta.com/privacy"
+            >Privacy Policy</a
+          >
+          <a
+            class="btn btn-secondary"
+            href="https://trysympta.com/terms-and-conditions/"
+            >Terms &amp; Conditions</a
+          >
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>© 2026 Sympta. All rights reserved.</span>
+        <span>Questions? support@trysympta.com</span>
+      </footer>
+    </div>
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
