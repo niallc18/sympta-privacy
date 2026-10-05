@@ -73,70 +73,82 @@
   </head>                                                                       
   <body>                                                                        
       <div class="container">                                                   
-          <h1>Privacy Policy</h1>                                               
-          <p class="last-updated">Last updated: July 2026</p>                
-                                                                                
-          <h2>Overview</h2>                                                     
-          <p>Sympta ("we", "our", or "the app") is a personal health tracking   
-  application that helps you log symptoms, meals, medications, mood, and sleep. 
-  Your privacy is important to us, and we are committed to protecting your      
-  personal health information.</p>                                              
-                                                                                
-          <h2>Information We Collect</h2>                                       
-          <ul>                                                                  
-              <li><span class="highlight">Health Data:</span> Symptoms, severity
-   levels, meals, medications, mood, sleep duration, and notes you enter</li>   
-              <li><span class="highlight">Usage Data:</span> Anonymous analytics
-   to improve app performance</li>                                              
-              <li><span class="highlight">Subscription Data:</span> Purchase    
-  information processed by Apple</li>                                           
-          </ul>                                                                 
-                                                                                
-          <h2>How Your Data is Stored</h2>                                      
-          <ul>                                                                  
+          <h1>Privacy Policy</h1>
+          <p class="last-updated">Last updated: October 2026</p>
+
+          <h2>Overview</h2>
+          <p>Sympta ("we", "our", or "the app") is a personal health journal that helps you log symptoms, meals, medications, mood, sleep and related notes. Your journal is stored on your device and, if you enable it, in your personal iCloud account. A small number of optional features send data off your device, and this policy explains exactly what, where, and why.</p>
+
+          <h2>Who We Are</h2>
+          <p>The controller responsible for your personal data is:</p>
+          <p>Niall Canning (trading as Sympta)<br>
+          Lytchett House, 13 Freeland Park, Wareham Road<br>
+          Poole, Dorset, BH16 6FA, United Kingdom<br>
+          Email: <a href="mailto:support@trysympta.com">support@trysympta.com</a></p>
+
+          <h2>Information We Collect</h2>
+          <ul>
+              <li><span class="highlight">Health Data:</span> Symptoms, severity levels, meals, medications, mood, sleep, energy, stress, water, bowel movements, period flow, and notes you enter. This is stored on your device and in your iCloud account, not on our servers.</li>
+              <li><span class="highlight">Name:</span> If you enter a name, it is stored on your device only and is used to personalise the app and your exported reports.</li>
+              <li><span class="highlight">Usage Data:</span> Pseudonymous analytics events (see "Analytics &amp; Attribution" below)</li>
+              <li><span class="highlight">Subscription Data:</span> Purchase information processed by Apple and by RevenueCat, our subscription management provider</li>
+          </ul>
+
+          <h2>How Your Data is Stored</h2>
+          <ul>
               <li>All your health entries are stored locally on your device</li>
-              <li>If you enable iCloud, your data syncs securely across your    
-  Apple devices using your personal iCloud account</li>                         
-              <li>We do not have access to your iCloud data</li>                
-              <li>We do not store your health data on our servers</li>          
-          </ul>                                                                 
-                                                                                
+              <li>If you enable iCloud, your data syncs across your Apple devices using your personal iCloud account</li>
+              <li>We do not have access to your iCloud data</li>
+              <li>We do not store your health data on our servers</li>
+          </ul>
+
+          <h2>Optional AI Features</h2>
+          <p>Sympta has two optional features that use Google's Gemini AI: Voice + AI and AI Summary. They only run when you use them, you are asked for your consent before each one is used for the first time, and you can turn all AI features off at any time in Settings under Smart features. Turning them off also withdraws your consent, so you will be asked again if you turn them back on.</p>
+
           <h2>AI Voice Feature</h2>
           <p>When you use the Voice + AI feature:</p>
           <ul>
-              <li>Your voice transcript is sent to our secure cloud
-  function</li>
-              <li>The transcript is forwarded to Google's Gemini AI to extract
-  structured health data</li>
-              <li>We do not store your transcripts or AI outputs on our
-  servers</li>
-              <li>We only maintain an anonymous daily counter to enforce usage
-  limits (10 per day)</li>
-              <li>Voice data is processed in real-time and not retained</li>
+              <li>Your speech is converted to text by Apple's speech recognition service. Depending on your device and iOS version, Apple may process the audio on its servers, under <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple's Privacy Policy</a>. We never receive or store your audio.</li>
+              <li>The resulting text transcript is sent to our secure cloud function and forwarded to Google's Gemini AI to extract structured health data (for example symptoms, meals, sleep and mood)</li>
+              <li>The extracted data is returned to your device for you to review before anything is saved</li>
+              <li>We do not store your transcripts or the AI output on our servers</li>
           </ul>
 
           <h2>AI Summary Feature</h2>
           <p>When you use the AI Summary feature:</p>
           <ul>
-              <li>Your logged health entry data (such as symptom names, severity, mood, sleep hours, meal descriptions, medication names, stress, energy, and water levels) is sent to our secure cloud function</li>
-              <li>This data is forwarded to Google's Gemini AI to generate a personalized health summary</li>
-              <li>You choose which trackers to include or exclude before generating a summary</li>
-              <li>No voice recordings, audio, or account information is sent</li>
-              <li>We do not store your health data or AI-generated summaries on our servers</li>
+              <li>The entries from the period you choose (the last 7, 14 or 30 days) are sent to our secure cloud function and forwarded to Google's Gemini AI to generate a written summary of patterns in your log</li>
+              <li>Depending on the trackers you include, this can contain the entry dates, symptom names and severity, mood, sleep hours, meal descriptions, medication names, energy, stress, water, bowel movements, period flow, and the notes you wrote</li>
+              <li>You choose which trackers to include or exclude before generating a summary. Anything you exclude is not sent.</li>
+              <li>Your name, voice recordings and audio are never sent</li>
+              <li>We do not store your health data or the AI-generated summaries on our servers</li>
               <li>Generated summaries are stored locally on your device and in your personal iCloud account</li>
-              <li>We only maintain an anonymous daily counter to enforce usage limits (3 per day)</li>
-              <li>You must provide consent before using this feature for the first time</li>
+          </ul>
+
+          <h2>How the AI Requests Are Handled</h2>
+          <ul>
+              <li><span class="highlight">Identifier:</span> Each request carries a random app identifier created by Firebase Authentication (Google). It is not linked to your name, email address or Apple ID.</li>
+              <li><span class="highlight">Usage limits:</span> We store a counter linked to that random identifier to enforce daily limits (10 voice entries and 3 summaries per day). It holds only the current day's count and contains no health data.</li>
+              <li><span class="highlight">App verification:</span> We use Firebase App Check (with Apple's App Attest) to confirm requests come from the genuine Sympta app. This does not involve your health data.</li>
+              <li><span class="highlight">No content logging:</span> Our cloud function does not log or store the content of your transcripts, entries or summaries.</li>
+              <li><span class="highlight">Location:</span> Our cloud functions run on Google Cloud servers in the United States (see "International Transfers" below).</li>
           </ul>
 
           <h2>Google Gemini AI</h2>
-          <p>Both the Voice and AI Summary features use Google's Gemini AI for processing. We use the paid Gemini API tier, under which Google does not use your prompts or responses to improve their products or train AI models. Data may be briefly retained by Google for abuse detection and legal compliance. For full details, please refer to <a href="https://ai.google.dev/gemini-api/terms" target="_blank">Google's Gemini API Terms of Service</a>.</p>                                                                 
-                                                                                
+          <p>We use the paid Gemini API, under which Google processes your data on our behalf as a service provider. Under these terms Google does not use your prompts or responses to improve its products or train AI models. Google may retain prompts and responses for a limited period solely to detect abuse and meet legal obligations, as described in <a href="https://ai.google.dev/gemini-api/terms" target="_blank">Google's Gemini API Terms of Service</a>.</p>
+
           <h2>Data Sharing</h2>
-          <p class="highlight">We do not sell, rent, or share your personal health data with third parties.</p>
+          <p class="highlight">We do not sell or rent your personal data, and we never share your health data with anyone for their own purposes.</p>
           <ul>
-              <li>Your health data remains on your device and iCloud account</li>
               <li>We do not share your health data with advertisers</li>
-              <li>We do not share data with healthcare providers unless you export it yourself</li>
+              <li>We do not share data with healthcare providers unless you export it and share it yourself</li>
+              <li>To run the app we use the service providers listed below. They process data on our behalf and only for the purposes described in this policy. Only Google receives health data, and only when you use one of the optional AI features above.</li>
+          </ul>
+          <ul>
+              <li><span class="highlight">Google (Gemini API, Firebase, Google Cloud):</span> AI processing, anonymous sign-in, app verification and usage limits</li>
+              <li><span class="highlight">Apple:</span> iCloud sync, speech recognition, and payments</li>
+              <li><span class="highlight">RevenueCat:</span> subscription management (purchase status, not health data)</li>
+              <li><span class="highlight">PostHog and AppsFlyer:</span> analytics and attribution, described below (never health data)</li>
           </ul>
 
           <h2>Analytics &amp; Attribution</h2>
@@ -150,47 +162,59 @@
 
           <p>We also use PostHog, a product analytics service, to understand how features are used and where users encounter friction (for example, which onboarding step they reach), so we can improve the app.</p>
           <ul>
-              <li>We log only anonymous, behavioural usage events, such as which screen was viewed, which subscription plan was selected, or that an entry was logged or a summary generated</li>
+              <li>We log only behavioural usage events, such as which screen was viewed, which subscription plan was selected, or that an entry was logged or a summary generated, together with your subscription status</li>
+              <li>Events are linked to a random identifier, not to your name, email address or Apple ID</li>
               <li>We never send your health data, symptom details, notes, voice transcripts, or your name to PostHog</li>
               <li>Your analytics data is processed and stored on PostHog's servers in the European Union</li>
               <li>For more information, see <a href="https://posthog.com/privacy" target="_blank">PostHog's Privacy Policy</a></li>
           </ul>
-                                                                                
-          <h2>Your Rights</h2>                                                  
-          <p>You have full control over your data:</p>                          
-          <ul>                                                                  
-              <li><span class="highlight">Export:</span> Download all your data 
-  as CSV or PDF at any time</li>                                                
-              <li><span class="highlight">Delete:</span> Remove individual      
-  entries or all data by deleting the app</li>                                  
-              <li><span class="highlight">Access:</span> View all your stored   
-  information within the app</li>                                               
-          </ul>                                                                 
-                                                                                
-          <h2>Security</h2>                                                     
-          <ul>                                                                  
-              <li>Data is encrypted on your device using iOS security           
-  features</li>                                                                 
-              <li>iCloud sync uses Apple's end-to-end encryption</li>           
-              <li>Optional Face ID/Touch ID protection for app access</li>      
-              <li>We follow industry best practices for data protection</li>    
-          </ul>                                                                 
-                                                                                
-          <h2>Children's Privacy</h2>                                           
-          <p>Sympta is not intended for children under 13. We do not knowingly  
-  collect information from children under 13. If you believe a child has        
-  provided us with personal information, please contact us.</p>                 
-                                                                                
-          <h2>Changes to This Policy</h2>                                       
-          <p>We may update this privacy policy from time to time. We will notify
-   you of any significant changes through the app. Continued use of Sympta after
-   changes constitutes acceptance of the updated policy.</p>                    
-                                                                                
-          <h2>Contact Us</h2>                                                   
-          <p>If you have questions about this privacy policy or your data,      
-  please contact us at:</p>                                                     
-          <p><a                                                                 
-  href="mailto:support@trysympta.com">support@trysympta.com</a></p>             
+
+          <h2>Legal Bases for Processing</h2>
+          <p>If you are in the UK or the European Economic Area, we rely on the following legal bases under the UK GDPR and the EU GDPR:</p>
+          <ul>
+              <li><span class="highlight">Optional AI features:</span> Because these involve health data, we rely on your explicit consent (Article 6(1)(a) and Article 9(2)(a)). You give it in the app before first using each feature, and you can withdraw it at any time by turning off Smart features in Settings. Withdrawing consent does not affect processing that happened before.</li>
+              <li><span class="highlight">Subscriptions:</span> Processing needed to provide the service you purchased (Article 6(1)(b))</li>
+              <li><span class="highlight">Usage limits and app verification:</span> Our legitimate interest in preventing abuse and keeping the service secure (Article 6(1)(f))</li>
+              <li><span class="highlight">Analytics and attribution:</span> Our legitimate interest in improving the app and understanding how people find it (Article 6(1)(f)). These never involve health data.</li>
+          </ul>
+
+          <h2>International Transfers</h2>
+          <p>We are based in the United Kingdom. Some of our service providers (including Google, RevenueCat and AppsFlyer) may process data in the United States or other countries. Where this happens, we rely on the safeguards those providers offer, such as the EU-US Data Privacy Framework (and its UK extension) or standard contractual clauses.</p>
+
+          <h2>Data Retention</h2>
+          <ul>
+              <li>Your journal stays on your device and in your iCloud account until you delete it</li>
+              <li>We do not retain the content of AI requests. Google's retention is described in the Google Gemini AI section above.</li>
+              <li>The usage-limit counter holds only the current day's count</li>
+              <li>Analytics and attribution data are kept by PostHog and AppsFlyer in line with their retention settings and policies</li>
+          </ul>
+
+          <h2>Your Rights</h2>
+          <p>You have full control over your journal:</p>
+          <ul>
+              <li><span class="highlight">Export:</span> Download all your data as CSV or PDF at any time</li>
+              <li><span class="highlight">Delete:</span> Remove individual entries in the app. Deleting the app removes the data on your device. If you use iCloud sync, you can also remove Sympta's iCloud data in iOS Settings under your name, then iCloud, then Manage Storage.</li>
+              <li><span class="highlight">Access:</span> View all your stored information within the app</li>
+          </ul>
+          <p>Depending on where you live, you may also have the right to access, correct, delete, restrict or object to our processing of your personal data, to data portability, and to withdraw consent at any time. To exercise these rights, contact us at <a href="mailto:support@trysympta.com">support@trysympta.com</a>. Because we do not hold your journal on our servers, the only personal data we can act on directly is the random-identifier usage counter and analytics data. You also have the right to complain to a data protection authority, such as the UK Information Commissioner's Office (ico.org.uk) or the authority in your EU country.</p>
+
+          <h2>Security</h2>
+          <ul>
+              <li>Data is encrypted on your device using iOS security features</li>
+              <li>iCloud sync is protected by Apple's iCloud security. If you turn on Advanced Data Protection for iCloud, it is end-to-end encrypted.</li>
+              <li>Data sent to our cloud function is encrypted in transit</li>
+              <li>Optional Face ID/Touch ID protection for app access</li>
+          </ul>
+
+          <h2>Children's Privacy</h2>
+          <p>Sympta is not intended for children under 13. We do not knowingly collect information from children under 13. If you believe a child has provided us with personal information, please contact us.</p>
+
+          <h2>Changes to This Policy</h2>
+          <p>We may update this privacy policy from time to time. We will notify you of any significant changes through the app. Continued use of Sympta after changes constitutes acceptance of the updated policy.</p>
+
+          <h2>Contact Us</h2>
+          <p>If you have questions about this privacy policy or your data, please contact us at:</p>
+          <p><a href="mailto:support@trysympta.com">support@trysympta.com</a></p>
       </div>                                                                    
   </body>                                                                       
   </html>  
