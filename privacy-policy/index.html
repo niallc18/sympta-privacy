@@ -154,7 +154,7 @@
           <ul>
               <li><span class="highlight">Google (Gemini API, Firebase, Google Cloud):</span> AI processing, anonymous sign-in, app verification and usage limits</li>
               <li><span class="highlight">Apple:</span> iCloud sync, speech recognition, and payments</li>
-              <li><span class="highlight">RevenueCat:</span> subscription management (purchase status, not health data)</li>
+              <li><span class="highlight">RevenueCat:</span> subscription management (purchase status, not health data) and, only if you allow it, Apple Ads attribution, described below</li>
               <li><span class="highlight">PostHog:</span> app usage analytics, only if you allow them, described below (never health data)</li>
           </ul>
 
@@ -167,8 +167,18 @@
               <li>Events are linked to a random identifier, not to your name, email address or Apple ID</li>
               <li>We never send your health data, symptom details, notes, voice transcripts, or your name to PostHog</li>
               <li>Your analytics data is processed and stored on PostHog's servers in the European Union</li>
-              <li>We currently do not use advertising or attribution services, and we do not request access to your device's advertising identifier (IDFA). If we add one in the future, for example to measure which ads bring people to Sympta, we will update this policy first and it will only run if you give your permission in the app.</li>
               <li>For more information, see <a href="https://posthog.com/privacy" target="_blank">PostHog's Privacy Policy</a></li>
+          </ul>
+
+          <h2>Apple Ads Attribution</h2>
+          <p>We advertise Sympta in App Store search results through Apple Ads. To learn which of our ads work, and stop spending on the ones that don't, we measure which ad (if any) led to your download.</p>
+          <ul>
+              <li><span class="highlight">Only if you allow it:</span> this is part of the same "Help improve Sympta?" choice as analytics and the "Share usage data" switch in Settings. If you choose No thanks, it doesn't run.</li>
+              <li><span class="highlight">How it works:</span> Apple's AdServices framework gives the app a one-time attribution token. RevenueCat sends it to Apple, and Apple replies with the ad campaign, ad group and keyword that led to the download, or that it didn't come from an ad. RevenueCat stores this with your anonymous subscription record so we can see, for example, how many people from a campaign started a trial.</li>
+              <li>We do not request access to your device's advertising identifier (IDFA), we do not track you across other companies' apps or websites, and we do not share any of this with ad networks</li>
+              <li>It never includes your health data, entries, notes or name</li>
+              <li>Turning off "Share usage data" stops it from the next app launch. Attribution is sent at most once per install.</li>
+              <li>For more information, see <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat's Privacy Policy</a> and <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple's Privacy Policy</a></li>
           </ul>
 
           <h2>Legal Bases for Processing</h2>
@@ -177,7 +187,7 @@
               <li><span class="highlight">Optional AI features:</span> Because these involve health data, we rely on your explicit consent (Article 6(1)(a) and Article 9(2)(a)). You give it in the app before first using each feature, and you can withdraw it at any time by turning off Smart features in Settings. Withdrawing consent does not affect processing that happened before.</li>
               <li><span class="highlight">Subscriptions:</span> Processing needed to provide the service you purchased (Article 6(1)(b))</li>
               <li><span class="highlight">Usage limits and app verification:</span> Our legitimate interest in preventing abuse and keeping the service secure (Article 6(1)(f))</li>
-              <li><span class="highlight">Analytics:</span> Your consent (Article 6(1)(a)), given in the app and withdrawable at any time with the "Share usage data" switch in Settings. Analytics never involve health data.</li>
+              <li><span class="highlight">Analytics and Apple Ads attribution:</span> Your consent (Article 6(1)(a)), given in the app and withdrawable at any time with the "Share usage data" switch in Settings. Neither ever involves health data.</li>
           </ul>
 
           <h2>International Transfers</h2>
@@ -189,6 +199,7 @@
               <li>We do not retain the content of AI requests. Google's retention is described in the Google Gemini AI section above.</li>
               <li>The usage-limit counter holds only the current day's count</li>
               <li>If you allowed analytics, that data is kept by PostHog in line with its retention settings. Turning analytics off stops collection.</li>
+              <li>If you allowed it, Apple Ads attribution is kept with your anonymous subscription record at RevenueCat for as long as that record exists</li>
           </ul>
 
           <h2>Your Rights</h2>
